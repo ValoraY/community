@@ -1,0 +1,9 @@
+2021-11-14 15:52:13.184  INFO 25700 --- [main] com.nowcoder.community.LoggerTests       : Starting LoggerTests using Java 14.0.2 on LAPTOP-B9QAJRGF with PID 25700 (started by 鲸鱼 in D:\develop\workSpace\community)
+2021-11-14 15:52:13.185 DEBUG 25700 --- [main] com.nowcoder.community.LoggerTests       : Running with Spring Boot v2.5.6, Spring v5.3.12
+2021-11-14 15:52:13.187  INFO 25700 --- [main] com.nowcoder.community.LoggerTests       : No active profile set, falling back to default profiles: default
+2021-11-14 15:52:14.959  INFO 25700 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-11-14 15:52:15.304  INFO 25700 --- [main] com.nowcoder.community.LoggerTests       : Started LoggerTests in 2.569 seconds (JVM running for 3.372)
+2021-11-14 15:52:15.739 DEBUG 25700 --- [main] com.nowcoder.community.LoggerTests       : log debug
+2021-11-14 15:52:15.740  INFO 25700 --- [main] com.nowcoder.community.LoggerTests       : log info
+2021-11-14 15:52:15.740  WARN 25700 --- [main] com.nowcoder.community.LoggerTests       : log warn
+2021-11-14 15:52:15.740 ERROR 25700 --- [main] com.nowcoder.community.LoggerTests       : log error

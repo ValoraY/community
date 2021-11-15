@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace里是该xml配置文件为哪个mapper服务——那个mapper的全限定名-->
+<mapper namespace="com.nowcoder.community.dao.UserMapper">
+    <!--
+    resultType应该是返回值类型的全限定名，
+    但是因为application.properties中配置了用于封装表中数据的实体类所在的包名，
+    所以这里只写类名
+    -->
+
+    <sql id="insertFields">
+        username,password,salt,email,type,status,activation_code,header_url,create_time
+    </sql>
+
+    <sql id="selectFields">
+        id,username,password,salt,email,type,status,activation_code,header_url,create_time
+    </sql>
+
+    <select id="selectById" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="selectByName" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where username = #{username}
+    </select>
+
+    <select id="selectByEmail" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where email = #{email}
+    </select>
+    <!-- = 左边的email代表数据表中的字段名，右边花括号里的email代表UserMapper类中的方法中的参数名-->
+
+    <!--
+        keyProperty="id"：向数据库插入数据时，我们不填id值，
+        数据库(或说mysql)会为该行自动生成主键id，mybatis会获取到这个主键值，并将它回填到实体类的对象中，
+        所以要告诉mybatis主键值对应的属性名是id，方便mybatis将主键值回填到正确位置
+    -->
+    <insert id="insertUser" parameterType="User" keyProperty="id">
+        insert into user(<include refid="insertFields"></include>)
+        values(#{username},#{password},#{salt},#{email},#{type},#{status},#{activationCode},#{headerUrl},#{createTime})
+    </insert>
+
+    <update id="updateStatus">
+        update user set status = #{status} where id = #{id}
+    </update>
+    <!--set 字段名 = 参数名-->
+
+    <update id="updateHeaderUrl">
+        update user set header_url = #{headerUrl} where id = #{id}
+    </update>
+
+    <update id="updatePassword">
+        update user set password = #{password} where id = #{id}
+    </update>
+
+
+</mapper>
